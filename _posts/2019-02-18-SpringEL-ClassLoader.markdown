@@ -1,11 +1,14 @@
 ---
 layout: post
 title:  "SpringEL ClassLoader"
-date:   2019-02-18 15:46:32 +0800
-categories: jekyll update
+subtitle: "SpringEL Fails the Third Time"
+date:   2019-02-18 15:46:32
+author: "Sarag"
+header-img: "img/post-bg-2019.jpg"
+tags: 
+  - Spring
+  - Java
 ---
-## SpringEl fail the third time
-
 ### The First Look
 
 Our project use springel to evaluate expressions and one strange error happens. It seems like that the first two evaluations are always successful, however when it comes to the third time the evaluation begins to fail. After tracing down the source code we find the reason.
@@ -70,6 +73,9 @@ And the `RestartClassLoader` is because of our usage of `spring-boot-devtools` w
 
 ### References
 
-<https://github.com/AxonFramework/AxonFramework/issues/344>
+[https://github.com/AxonFramework/AxonFramework/issues/344](https://github.com/AxonFramework/AxonFramework/issues/344)
 
-https://stackoverflow.com/questions/31282985/classcastexception-on-custom-class-loading>
+[https://stackoverflow.com/questions/31282985/classcastexception-on-custom-class-loading](https://stackoverflow.com/questions/31282985/classcastexception-on-custom-class-loading)
+
+
+
