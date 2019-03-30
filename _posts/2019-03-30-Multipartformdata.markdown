@@ -207,5 +207,5 @@ Someone asked me a question that "Why does the web server have to store the file
 
 My answer to this question is: 
 
-1. To implement a common use web server, the server itselt won't know what does the user want to do with the stream, the stream could be blocked by some computation work, which is not IO efficiency.
+1. To implement a common use web server, the server itself won't know what does the user want to do with the stream, the stream could be blocked by some computation work, which is not IO efficiency.
 2. When the user want to process IO stream more efficiently, he can implement another function for it.
