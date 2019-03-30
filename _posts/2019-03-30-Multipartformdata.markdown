@@ -132,15 +132,20 @@ public List<FileItem> parseRequest(RequestContext ctx)
             while (iter.hasNext()) {
                 final FileItemStream item = iter.next();
                 // Don't use getName() here to prevent an InvalidFileNameException.
-                final String fileName = ((FileItemIteratorImpl.FileItemStreamImpl) item).name;
-                FileItem fileItem = fac.createItem(item.getFieldName(), item.getContentType(), item.isFormField(), fileName);
+                final String fileName = ((FileItemIteratorImpl.
+                                          FileItemStreamImpl) item).name;
+                FileItem fileItem = fac.createItem(item.getFieldName(),
+                                                   item.getContentType(), 		
+                                                   item.isFormField(), fileName);
                 items.add(fileItem);
                 try {
                     Streams.copy(item.openStream(), fileItem.getOutputStream(), true);
                 } catch (FileUploadIOException e) {
                     throw (FileUploadException) e.getCause();
                 } catch (IOException e) {
-                    throw new IOFileUploadException(String.format("Processing of %s request failed. %s", MULTIPART_FORM_DATA, e.getMessage()), e);
+                    throw new IOFileUploadException(
+                   String.format("Processing of %s request failed. %s",
+                                 MULTIPART_FORM_DATA, e.getMessage()), e);
                 }
                 final FileItemHeaders fih = item.getHeaders();
                 fileItem.setHeaders(fih);
@@ -157,7 +162,7 @@ public List<FileItem> parseRequest(RequestContext ctx)
                     try {
                         fileItem.delete();
                     } catch (Exception ignored) {
-                        // ignored TODO perhaps add to tracker delete failure list somehow?
+                    // ignored TODO perhaps add to tracker delete failure list somehow?
                     }
                 }
             }
@@ -170,7 +175,8 @@ public List<FileItem> parseRequest(RequestContext ctx)
 #### How to use in Servlet?
 
 ```java
-//The following is a brief example of typical usage in a servlet, storing the uploaded files on disk.
+// The following is a brief example of typical usage in a servlet,
+// storing the uploaded files on disk.
 
 public void doPost(HttpServletRequest req, HttpServletResponse res) {
    DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -203,7 +209,7 @@ public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
 ## Why Does Tomcat Save the Files to Disk? 
 
-Someone asked me a question that "Why does the web server have to store the file to disk (or memory,  depending on the file size) when it can process the stream directly?
+Someone asked me a question that "Why does the web server have to store the file to disk or memory,  depending on the file size, when it can process the stream directly?
 
 My answer to this question is: 
 
