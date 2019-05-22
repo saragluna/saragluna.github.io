@@ -6,7 +6,7 @@ date:       "2019-03-28 12:00:00"
 author:     "Sarag"
 header-img: "img/post-bg-2019.jpg"
 tags:
-    - Algorigthms
+    - Algorithms
 ---
 
 
